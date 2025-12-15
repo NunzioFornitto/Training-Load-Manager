@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "temp_app",
-    "slug": "temp_app",
+    "name": "Training Load Manager",
+    "slug": "training-load-manager",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -20,6 +20,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
+      "package": "com.nunziofornitto.trainingloadmanager",
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false
     },
