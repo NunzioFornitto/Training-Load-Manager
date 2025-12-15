@@ -1,0 +1,190 @@
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import * as Localization from 'expo-localization';
+import 'intl-pluralrules';
+
+const resources = {
+    en: {
+        translation: {
+            welcome: "Training Load Manager",
+            start_training: "Start Training",
+            tutorial: "Tutorial",
+            settings: "Settings",
+            language: "Language",
+            save: "Save",
+            cancel: "Cancel",
+            input_title: "Enter Workout Data",
+            rpe_label: "RPE (1-10)",
+            duration_label: "Duration (minutes)",
+            sleep_label: "Sleep Quality (1-5)",
+            fatigue_label: "Fatigue Level (1-5)",
+            submit: "Submit",
+            history: "History",
+            load_suggestions: "Load Suggestions",
+            tutorial_content: "Welcome to Training Load Manager!\n\nThis app helps you track your training load using scientific methods.\n\n1. **Input**: Enter your daily workout details (RPE, Duration) and wellness metrics (Sleep, Fatigue).\n2. **Analysis**: The app calculates your Acute/Chronic Workload Ratio (ACWR).\n3. **suggestions**: Based on your data, we suggest whether to increase, maintain, or decrease your load to avoid overtraining.\n\nUse the settings to change language.",
+            close: "Close",
+            today: "Today",
+            acwr: "ACWR",
+            chronic_load: "Chronic Load",
+            acute_load: "Acute Load",
+            edit_log: "Edit Log",
+            wellness: "Wellness",
+            workout: "Workout",
+            error: "Error",
+            missing_info: "Please enter sleep and fatigue levels.",
+            dev_tools: "Developer Tools",
+            seed_data: "Seed Data",
+            seeded: "Seeded!",
+            clear_data: "Clear Data",
+            cleared: "Cleared!",
+            new_entry_title: "New Entry",
+            no_exercises: "No exercises added yet. Use the button below to add.",
+            add_exercise: "Add Exercise",
+            sets: "sets",
+            exercise_name_placeholder: "Exercise Name (e.g. Squat)",
+            reps: "Reps",
+            kg: "Kg",
+            rpe: "RPE",
+            set: "Set",
+            no_sets: "No sets added yet",
+            save_exercise: "Save Exercise",
+            risk: {
+                low: "Low",
+                moderate: "Moderate",
+                high: "High",
+                optimal: "Optimal"
+            },
+            suggestion: {
+                maintain: "Maintain current load.",
+                high_risk: "High injury risk. Consider a deload or active recovery.",
+                increase_rapid: "Load is increasing rapidly. Monitor fatigue closely.",
+                decrease: "Load is decreasing. Good for recovery, but potential detraining if prolonged.",
+                optimal: "Sweet spot (0.8 - 1.3). Optimal for progressive overload safely.",
+                fatigue_warning: " CAUTION: High fatigue/Poor sleep detected. Reduce intensity by 10-20%."
+            },
+            not_found_title: "Oops!",
+            not_found_message: "This screen doesn't exist.",
+            go_home: "Go to home screen!",
+            theme_mode: "Theme Mode",
+            theme: {
+                light: "Light",
+                dark: "Dark",
+                auto: "System Default"
+            },
+            explanation: {
+                acwr_title: "ACWR (Acute/Chronic Workload Ratio)",
+                acwr_desc: "The ratio between your last 7 days load (fatigue) and last 28 days load (fitness). \n\n< 0.8: Risk of detraining\n0.8 - 1.3: Optimal load\n> 1.5: High injury risk",
+                chronic_title: "Chronic Load (28 Days)",
+                chronic_desc: "Represents your average 'fitness' over the last month. Higher means you are accustomed to higher loads.",
+                acute_title: "Acute Load (7 Days)",
+                acute_desc: "Represents your current 'fatigue' over the last week.",
+                today_title: "Daily Load",
+                today_desc: "Total volume of work performed today (Sets x Reps x Weight).",
+                sleep_title: "Sleep Quality (1-5)",
+                sleep_desc: "How well did you sleep?\n1: Terrible\n3: Normal\n5: Perfect\nSleep is crucial for recovery.",
+                fatigue_title: "Fatigue Level (1-5)",
+                fatigue_desc: "How tired do you feel BEFORE training?\n1: Fresh\n3: A bit tired\n5: Exhausted\nIf fatigue is high, consider reducing load.",
+                rpe_title: "RPE (Perceived Exertion)",
+                rpe_desc: "How hard was the set?\n1-4: Easy\n5-7: Moderate\n8: Hard (2 reps in reserve)\n9: Very Hard (1 rep in reserve)\n10: Max Effort (0 reps in reserve)"
+            }
+        }
+    },
+    it: {
+        translation: {
+            welcome: "Training Load Manager",
+            start_training: "Inizia Allenamento",
+            tutorial: "Tutorial",
+            settings: "Impostazioni",
+            language: "Lingua",
+            save: "Salva",
+            cancel: "Annulla",
+            input_title: "Inserisci Dati Allenamento",
+            rpe_label: "RPE (1-10)",
+            duration_label: "Durata (minuti)",
+            sleep_label: "Qualità Sonno (1-5)",
+            fatigue_label: "Livello Fatica (1-5)",
+            submit: "Invia",
+            history: "Cronologia",
+            load_suggestions: "Suggerimenti Carico",
+            tutorial_content: "Benvenuto in Training Load Manager!\n\nQuesta app ti aiuta a monitorare il carico di allenamento usando metodi scientifici.\n\n1. **Input**: Inserisci i dettagli del tuo allenamento (RPE, Durata) e metriche di benessere (Sonno, Fatica).\n2. **Analisi**: L'app calcola il rapporto Acuto/Cronico (ACWR).\n3. **Suggerimenti**: Basandosi sui dati, suggeriamo se aumentare, mantenere o diminuire il carico per evitare il sovrallenamento.\n\nUsa le impostazioni per cambiare lingua.",
+            close: "Chiudi",
+            today: "Oggi",
+            acwr: "ACWR",
+            chronic_load: "Carico Cronico",
+            acute_load: "Carico Acuto",
+            edit_log: "Modifica Log",
+            wellness: "Benessere",
+            workout: "Allenamento",
+            error: "Errore",
+            missing_info: "Inserisci i livelli di sonno e fatica.",
+            dev_tools: "Strumenti Sviluppatore",
+            seed_data: "Genera Dati",
+            seeded: "Dati Generati!",
+            clear_data: "Cancella Dati",
+            cleared: "Dati Cancellati!",
+            new_entry_title: "Nuova Voce",
+            no_exercises: "Nessun esercizio aggiunto. Usa il pulsante qui sotto per aggiungere.",
+            add_exercise: "Aggiungi Esercizio",
+            sets: "serie",
+            exercise_name_placeholder: "Nome Esercizio (es. Squat)",
+            reps: "Reps",
+            kg: "Kg",
+            rpe: "RPE",
+            set: "Serie",
+            no_sets: "Nessuna serie aggiunta",
+            save_exercise: "Salva Esercizio",
+            risk: {
+                low: "Basso",
+                moderate: "Moderato",
+                high: "Alto",
+                optimal: "Ottimale"
+            },
+            suggestion: {
+                maintain: "Mantieni il carico attuale.",
+                high_risk: "Alto rischio infortuni. Considera scarico o recupero attivo.",
+                increase_rapid: "Il carico aumenta rapidamente. Monitora la fatica.",
+                decrease: "Carico in diminuzione. Bene per recupero, ma rischio detraining se prolungato.",
+                optimal: "Sweet spot (0.8 - 1.3). Ottimale per sovraccarico progressivo.",
+                fatigue_warning: " ATTENZIONE: Alta fatica/Sonno scarso. Riduci intensità del 10-20%."
+            },
+            not_found_title: "Ops!",
+            not_found_message: "Questa schermata non esiste.",
+            go_home: "Torna alla home!",
+            theme_mode: "Tema",
+            theme: {
+                light: "Chiaro",
+                dark: "Scuro",
+                auto: "Predefinito di Sistema"
+            },
+            explanation: {
+                acwr_title: "ACWR (Rapporto Acuto/Cronico)",
+                acwr_desc: "È il rapporto tra il carico degli ultimi 7 giorni (fatica) e quello degli ultimi 28 giorni (forma fisica). \n\n< 0.8: Rischio perdita allenamento\n0.8 - 1.3: Carico ottimale\n> 1.5: Alto rischio infortunio",
+                chronic_title: "Carico Cronico (28 Giorni)",
+                chronic_desc: "Indica la tua 'forma fisica' media, ovvero quanto ti sei allenato nell'ultimo mese. Più è alto, più sei abituato al carico.",
+                acute_title: "Carico Acuto (7 Giorni)",
+                acute_desc: "Indica la tua 'fatica' attuale, ovvero quanto ti sei allenato nell'ultima settimana.",
+                today_title: "Carico Giornaliero",
+                today_desc: "Il volume totale del lavoro svolto oggi (Serie x Reps x Kg).",
+                sleep_title: "Qualità del Sonno (1-5)",
+                sleep_desc: "Quanto hai dormito bene?\n1: Pessimo/Insonnia\n3: Normale\n5: Perfetto/Riposato\nIl sonno è fondamentale per il recupero.",
+                fatigue_title: "Livello di Fatica (1-5)",
+                fatigue_desc: "Quanto ti senti stanco PRIMA di allenarti?\n1: Fresco/Energico\n3: Un po' stanco\n5: Esausto\nSe la fatica è alta, considera di ridurre il carico.",
+                rpe_title: "RPE (Scala dello Sforzo)",
+                rpe_desc: "Rate of Perceived Exertion. Quanto è stata dura la serie?\n1-4: Facile\n5-7: Medio (RIR 3-5)\n8: Pesante (RIR 2)\n9: Molto Pesante (RIR 1)\n10: Massimale (RIR 0)"
+            }
+        }
+    }
+};
+
+i18n
+    .use(initReactI18next)
+    .init({
+        resources,
+        lng: Localization.getLocales()[0].languageCode ?? 'en',
+        fallbackLng: 'en',
+        interpolation: {
+            escapeValue: false
+        }
+    });
+
+export default i18n;
