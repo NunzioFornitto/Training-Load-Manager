@@ -1,10 +1,11 @@
 // @ts-nocheck
 import { useState } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
-import { TextInput, Button, Text, Surface, useTheme, IconButton } from 'react-native-paper';
+import { TextInput, Button, Text, Surface, useTheme, IconButton, List } from 'react-native-paper';
 import { ExerciseEntry, Set } from '../types';
 import { useTranslation } from 'react-i18next';
 import { InfoButton } from './InfoButton';
+import { EXERCISES } from '../data/exercises';
 
 interface ExerciseInputProps {
     onSave: (exercise: ExerciseEntry) => void;
@@ -15,6 +16,7 @@ export function ExerciseInput({ onSave, onCancel }: ExerciseInputProps) {
     const { colors } = useTheme();
     const { t } = useTranslation();
     const [name, setName] = useState('');
+    const [suggestions, setSuggestions] = useState<string[]>([]);
     const [sets, setSets] = useState<Set[]>([]);
 
     // Current Set Input
@@ -45,9 +47,35 @@ export function ExerciseInput({ onSave, onCancel }: ExerciseInputProps) {
                 mode="outlined"
                 label={t('exercise_name_placeholder')}
                 value={name}
-                onChangeText={setName}
+
+                onChangeText={(text) => {
+                    setName(text);
+                    if (text.length > 1) {
+                        const matches = EXERCISES.filter(ex => ex.toLowerCase().includes(text.toLowerCase()));
+                        setSuggestions(matches.slice(0, 5));
+                    } else {
+                        setSuggestions([]);
+                    }
+                }}
                 style={styles.input}
             />
+
+            {suggestions.length > 0 && (
+                <Surface style={[styles.suggestions, { backgroundColor: colors.elevation.level3 }]} elevation={3}>
+                    {suggestions.map((suggestion, index) => (
+                        <List.Item
+                            key={index}
+                            title={suggestion}
+                            onPress={() => {
+                                setName(suggestion);
+                                setSuggestions([]);
+                            }}
+                            style={{ padding: 0 }}
+                            titleStyle={{ fontSize: 14 }}
+                        />
+                    ))}
+                </Surface>
+            )}
 
             <View style={styles.setForm}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
@@ -137,6 +165,16 @@ const styles = StyleSheet.create({
     },
     setForm: {
         marginTop: 8,
+    },
+    suggestions: {
+        position: 'absolute',
+        top: 130, // Adjust based on input height
+        left: 16,
+        right: 16,
+        zIndex: 1000,
+        borderRadius: 8,
+        zIndex: 1000,
+        borderRadius: 8,
     },
     row: {
         flexDirection: 'row',
