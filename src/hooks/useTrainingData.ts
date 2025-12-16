@@ -34,8 +34,9 @@ export function useTrainingData() {
         // Get suggestions
         // Use yesterday's fatigue/sleep or today's if available for autoregulation
         const latestLog = data.sort((a, b) => b.date.localeCompare(a.date))[0];
-        const sleep = latestLog ? latestLog.sleepQuality : 7;
-        const fatigue = latestLog ? latestLog.fatigue : 3;
+        // Default to "Good" state if no data: Sleep 4 (Good), Fatigue 2 (Fresh)
+        const sleep = latestLog ? latestLog.sleepQuality : 4;
+        const fatigue = latestLog ? latestLog.fatigue : 2;
 
         const { suggestionKey, riskLevelKey, fatigueWarning } = CalculationService.getSuggestions(ratio, fatigue, sleep);
 

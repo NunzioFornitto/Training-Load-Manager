@@ -1,10 +1,12 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { DailyLog, TrainingStats } from '../types';
+import { DailyLog, TrainingStats, WorkoutTemplate, WorkoutSession } from '../types';
 
 const KEYS = {
     DAILY_LOGS: 'tlm_daily_logs',
     STATS: 'tlm_stats',
     THEME: 'tlm_theme_pref',
+    TEMPLATES: 'tlm_templates',
+    CURRENT_WORKOUT: 'tlm_current_workout',
 };
 
 export const StorageService = {
@@ -59,4 +61,66 @@ export const StorageService = {
     async clearAll(): Promise<void> {
         await AsyncStorage.clear();
     },
+
+    async saveTemplate(template: WorkoutTemplate): Promise<void> {
+        try {
+            const templates = await this.getTemplates();
+            // Check if exists update, else push
+            const index = templates.findIndex(t => t.id === template.id);
+            if (index >= 0) {
+                templates[index] = template;
+            } else {
+                templates.push(template);
+            }
+            await AsyncStorage.setItem(KEYS.TEMPLATES, JSON.stringify(templates));
+        } catch (e) {
+            console.error('Failed to save template', e);
+        }
+    },
+
+    async getTemplates(): Promise<WorkoutTemplate[]> {
+        try {
+            const data = await AsyncStorage.getItem(KEYS.TEMPLATES);
+            return data ? JSON.parse(data) : [];
+        } catch (e) {
+            console.error('Failed to get templates', e);
+            return [];
+        }
+    },
+
+    async deleteTemplate(id: string): Promise<void> {
+        try {
+            const templates = await this.getTemplates();
+            const newTemplates = templates.filter(t => t.id !== id);
+            await AsyncStorage.setItem(KEYS.TEMPLATES, JSON.stringify(newTemplates));
+        } catch (e) {
+            console.error('Failed to delete template', e);
+        }
+    },
+
+    async saveCurrentWorkout(session: WorkoutSession): Promise<void> {
+        try {
+            await AsyncStorage.setItem(KEYS.CURRENT_WORKOUT, JSON.stringify(session));
+        } catch (e) {
+            console.error('Failed to save current workout', e);
+        }
+    },
+
+    async getCurrentWorkout(): Promise<WorkoutSession | null> {
+        try {
+            const data = await AsyncStorage.getItem(KEYS.CURRENT_WORKOUT);
+            return data ? JSON.parse(data) : null;
+        } catch (e) {
+            console.error('Failed to get current workout', e);
+            return null;
+        }
+    },
+
+    async clearCurrentWorkout(): Promise<void> {
+        try {
+            await AsyncStorage.removeItem(KEYS.CURRENT_WORKOUT);
+        } catch (e) {
+            console.error('Failed to clear current workout', e);
+        }
+    }
 };

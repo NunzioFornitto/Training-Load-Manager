@@ -86,7 +86,26 @@ const resources = {
                 fatigue_desc: "How tired do you feel BEFORE training?\n1: Fresh\n3: A bit tired\n5: Exhausted\nIf fatigue is high, consider reducing load.",
                 rpe_title: "RPE (Perceived Exertion)",
                 rpe_desc: "How hard was the set?\n1-4: Easy\n5-7: Moderate\n8: Hard (2 reps in reserve)\n9: Very Hard (1 rep in reserve)\n10: Max Effort (0 reps in reserve)"
-            }
+            },
+            add_set: "Add Set",
+            load_template: "Load Template",
+            save_as_template: "Save as Template",
+            template_saved: "Template Saved!",
+            template_error: "Name and exercises required",
+            select_template: "Select Template",
+            template_name: "Template Name",
+            save_template: "Save Template",
+            live_workout: "Live Workout",
+            finish: "Finish",
+            finish_workout: "Finish Workout",
+            enter_wellness: "Please enter your wellness stats to complete the log.",
+            save_and_finish: "Save & Finish",
+            current_workout: "Current Workout",
+            exercises: "Exercises",
+            start_live_workout: "Start Live Workout",
+            or_log_manually: "OR Log manually",
+            session: "Session"
+
         }
     },
     it: {
@@ -171,7 +190,26 @@ const resources = {
                 fatigue_desc: "Quanto ti senti stanco PRIMA di allenarti?\n1: Fresco/Energico\n3: Un po' stanco\n5: Esausto\nSe la fatica è alta, considera di ridurre il carico.",
                 rpe_title: "RPE (Scala dello Sforzo)",
                 rpe_desc: "Rate of Perceived Exertion. Quanto è stata dura la serie?\n1-4: Facile\n5-7: Medio (RIR 3-5)\n8: Pesante (RIR 2)\n9: Molto Pesante (RIR 1)\n10: Massimale (RIR 0)"
-            }
+            },
+            add_set: "Aggiungi Serie",
+            load_template: "Carica Template",
+            save_as_template: "Salva come Template",
+            template_saved: "Template Salvato!",
+            template_error: "Nome ed esercizi richiesti",
+            select_template: "Seleziona Template",
+            template_name: "Nome Template",
+            save_template: "Salva Template",
+            live_workout: "Allenamento in Corso",
+            finish: "Termina",
+            finish_workout: "Termina Allenamento",
+            enter_wellness: "Inserisci i dati benessere per completare.",
+            save_and_finish: "Salva e Termina",
+            current_workout: "Allenamento Corrente",
+            exercises: "Esercizi",
+            start_live_workout: "Inizia Live",
+            or_log_manually: "OPPURE Registra manualmente",
+            session: "Sessione"
+
         }
     }
 };

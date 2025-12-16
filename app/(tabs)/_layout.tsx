@@ -1,3 +1,4 @@
+
 // @ts-nocheck
 import React from 'react';
 import { Tabs } from 'expo-router';
@@ -24,11 +25,15 @@ export default function TabLayout() {
             <Tabs.Screen
                 name="index"
                 options={{
-                    title: t('welcome'), // "Dashboard" or "Home"
-                    tabBarLabel: "Home",
-                    tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons name="home-variant" size={size} color={color} />
-                    ),
+                    title: 'Home',
+                    tabBarIcon: ({ color }) => <MaterialCommunityIcons name="home" size={24} color={color} />,
+                }}
+            />
+            <Tabs.Screen
+                name="dashboard"
+                options={{
+                    title: 'Analytics',
+                    tabBarIcon: ({ color }) => <MaterialCommunityIcons name="chart-line" size={24} color={color} />,
                 }}
             />
             <Tabs.Screen
