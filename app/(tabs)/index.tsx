@@ -9,12 +9,23 @@ import { StatusBar } from 'expo-status-bar';
 import { useTranslation } from 'react-i18next';
 import i18n from '../../src/i18n';
 import { InfoButton } from '../../src/components/InfoButton';
+import { useFocusEffect } from 'expo-router';
+import { StorageService } from '../../src/services/storage';
+import { WorkoutSession } from '../../src/types';
 
 export default function Dashboard() {
     const router = useRouter();
     const { colors } = useTheme();
     const { t } = useTranslation();
     const { stats, todayLog, refresh } = useTrainingData();
+    const [currentSession, setCurrentSession] = React.useState<WorkoutSession | null>(null);
+
+    useFocusEffect(
+        React.useCallback(() => {
+            refresh();
+            StorageService.getCurrentWorkout().then(setCurrentSession);
+        }, [])
+    );
 
     return (
         <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
@@ -26,6 +37,22 @@ export default function Dashboard() {
             </Appbar.Header>
 
             <ScrollView contentContainerStyle={styles.scrollContent}>
+
+                {currentSession && (
+                    <Card style={[styles.card, { backgroundColor: colors.tertiaryContainer, marginBottom: 16 }]} onPress={() => router.push('/live-workout')}>
+                        <Card.Content style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                            <View>
+                                <Text variant="titleMedium" style={{ color: colors.onTertiaryContainer, fontWeight: 'bold' }}>
+                                    {t('current_workout', { defaultValue: 'Current Workout' })}
+                                </Text>
+                                <Text variant="bodyMedium" style={{ color: colors.onTertiaryContainer }}>
+                                    {currentSession.exercises.length} {t('exercises', { defaultValue: 'Exercises' })}
+                                </Text>
+                            </View>
+                            <IconButton icon="arrow-right" iconColor={colors.onTertiaryContainer} />
+                        </Card.Content>
+                    </Card>
+                )}
 
                 {/* Risk Status Card */}
                 <Card style={[styles.card, { backgroundColor: stats.riskLevelKey === 'high' ? colors.errorContainer : colors.primaryContainer }]}>
@@ -95,29 +122,11 @@ export default function Dashboard() {
                         contentStyle={{ height: 50 }}
                         icon="plus"
                     >
-                        {todayLog ? t('edit_log') : t('start_training')}
+                        {t('start_training')}
                     </Button>
                 </View>
 
-                {/* Dev Tools */}
-                <Divider style={{ marginVertical: 20 }} />
-                <Text variant="labelSmall" style={{ textAlign: 'center', opacity: 0.5, marginBottom: 8 }}>{t('dev_tools')}</Text>
-                <View style={styles.devActions}>
-                    <Button
-                        mode="outlined"
-                        compact
-                        textColor={colors.error}
-                        style={{ borderColor: colors.error }}
-                        onPress={async () => {
-                            const { StorageService } = require('../../src/services/storage');
-                            await StorageService.clearAll();
-                            await refresh();
-                            alert(t('cleared'));
-                        }}
-                    >
-                        {t('clear_data')}
-                    </Button>
-                </View>
+                {/* Dev Tools Removed */}
 
             </ScrollView>
         </SafeAreaView>

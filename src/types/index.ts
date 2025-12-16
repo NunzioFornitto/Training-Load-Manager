@@ -34,3 +34,16 @@ export interface TrainingStats {
     acwr: number;
     freshnessIndex: number; // Derived from ACWR or separate
 }
+
+export interface WorkoutTemplate {
+    id: string;
+    name: string;
+    exercises: ExerciseEntry[];
+}
+
+export interface WorkoutSession {
+    exercises: ExerciseEntry[];
+    completedIndices: number[]; // Store indices of completed exercises
+    startTime: string; // ISO string
+    templateName?: string; // Optional if loaded from template
+}
