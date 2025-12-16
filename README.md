@@ -4,7 +4,7 @@
 
 L'obiettivo dell'app è prevenire il sovrallenamento e ottimizzare le prestazioni utilizzando metriche validate come il **Volume Load** e il rapporto **Acute:Chronic Workload Ratio (ACWR)**.
 
-## 🚀 Che cos'è
+## 🚀 Che cos'è 
 
 TLM non è la solita app di fitness. È uno strumento di analisi per atleti e coach che vogliono basare le proprie decisioni sui dati. L'app permette di:
 
