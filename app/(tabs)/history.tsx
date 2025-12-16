@@ -30,7 +30,7 @@ export default function HistoryScreen() {
     const renderItem = ({ item }: { item: DailyLog }) => (
         <Card
             style={[styles.card, { backgroundColor: colors.elevation.level1 }]}
-            onPress={() => router.push({ pathname: '/input', params: { date: item.date } })}
+            onPress={() => router.push({ pathname: '/log-details', params: { date: item.date } })}
         >
             <Card.Content style={styles.cardContent}>
                 <View>
