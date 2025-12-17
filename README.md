@@ -95,7 +95,7 @@ Se non vuoi installare l'ambiente di sviluppo, puoi scaricare l'ultimo APK compi
 1. Vai nella scheda **Actions** del repository.
 2. Clicca sull'ultimo workflow completato con successo.
 3. Scorri in basso alla sezione **Artifacts** e scarica il file `app-release`.
-
+Oppure puoi andare nella sezione **Releases** e scaricare l'apk dell'ultima release. 
 
 ## 🔒 Privacy e Dati
 L'applicazione funziona completamente **offline**. Tutti i dati relativi agli allenamenti e alle statistiche personali sono salvati esclusivamente nella memoria del tuo dispositivo. Nessun dato viene inviato a server esterni.
