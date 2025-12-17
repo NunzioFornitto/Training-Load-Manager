@@ -8,10 +8,10 @@ L'obiettivo dell'app è prevenire il sovrallenamento e ottimizzare le prestazion
 
 TLM non è la solita app di fitness. È uno strumento di analisi per atleti e coach che vogliono basare le proprie decisioni sui dati. L'app permette di:
 
-- Registrare i dettagli degli allenamenti (Esercizi, Serie, Ripetizioni, Carico).
-- Monitorare parametri soggettivi fondamentali come **RPE** (Scala sofferza percepita), qualità del sonno e fatica giornaliera.
-- Visualizzare grafici e trend del carico di lavoro nel tempo.
-- Ricevere feedback automatici sul rischio di infortuni basati sul rapporto ACWR.
+- **Live Tracking**: Segui il tuo allenamento in tempo reale, spuntando le serie completate.
+- **Analisi Avanzata**: Dashboard interattiva con grafici per Volume Load e ACWR.
+- **Gestione Flessibile**: Supporta sessioni di allenamento multiple nello stesso giorno e Template riutilizzabili.
+- **Prevenzione**: Feedback automatici sul rischio di infortuni e autoregolazione basata sul benessere.
 
 ## 🧠 Come funziona (La Scienza)
 
@@ -29,8 +29,27 @@ Il cuore del sistema di prevenzione infortuni.
   - **0.8 - 1.3**: Zona Ottimale (Sweet Spot).
   - **> 1.5**: Alta probabilità di infortunio (Danger Zone).
 
-### 3. Autoregolazione
-Il sistema incrocia i dati oggettivi (tonnellaggio) con quelli soggettivi (Sonno, Fatica). Se il sonno è scarso o la fatica percepita è alta, l'app suggerirà prudenza anche se l'ACWR è nel range ottimale.
+### 3. Autoregolazione (Wellness)
+Il sistema incrocia i dati oggettivi (tonnellaggio) con quelli soggettivi (**Sonno, Fatica**). 
+L'algoritmo penalizza pesantemente il "punteggio di rischio" se il sonno è insufficiente (1-2/5) o la fatica è estrema (5/5), suggerendo il recupero anche se i carichi matematici sembrano sicuri.
+
+### 4. Gestione "Cold Start"
+Per i nuovi utenti, l'algoritmo include una fase di adattamento intelligente che evita falsi allarmi di "Carico Eccessivo" nelle prime 4 settimane, permettendo di costruire lo storico necessario per il calcolo ACWR.
+
+## 🌟 Funzionalità Principali
+
+### 🔴 Live Workout Mode
+Non aspettare la fine per inserire i dati. Avvia una sessione **Live** dalla Home, aggiungi esercizi o carica un template, e segna ogni serie come completata man mano che ti alleni. I dati vengono salvati in tempo reale per non perdere nulla.
+
+### 📊 Dashboard Analitica
+Una vista dedicata per esplorare i tuoi progressi:
+- **Grafico Volume**: Vedi quanto stai sollevando settimana per settimana.
+- **Grafico ACWR**: Visualizza la linea del tuo rapporto Acuto/Cronico per restare nella "Sweet Spot" (0.8 - 1.3).
+- **Tip**: Scorri orizzontalmente per vedere lo storico passato.
+
+### 📝 Templates & Multi-Sessione
+- **Templates**: Hai una scheda fissa? Salvala come Template e richiamala con un click.
+- **Sessioni Multiple**: Ti alleni mattina e sera? Nessun problema. L'app aggrega automaticamente tutte le sessioni della giornata nel calcolo del carico giornaliero, mantenendo però il dettaglio separato nella cronologia.
 
 ## 🛠️ Stack Tecnologico
 
@@ -40,6 +59,7 @@ L'applicazione è costruita con tecnologie moderne e performanti:
 - **Linguaggio:** TypeScript per maggiore sicurezza e manutenibilità.
 - **Routing:** Expo Router (file-based routing).
 - **UI Kit:** React Native Paper (Material Design).
+- **Charts:** `react-native-chart-kit` & `react-native-svg` per la visualizzazione dati.
 - **Storage:** `async-storage` (I dati sono salvati **localmente** sul dispositivo, nessun server esterno).
 - **Date Management:** `date-fns`.
 - **Internazionalizzazione:** `i18next` (Supporto multilingua).
@@ -83,6 +103,3 @@ L'applicazione funziona completamente **offline**. Tutti i dati relativi agli al
 ## 📄 Licenza
 Questo progetto è Open Source e distribuito sotto licenza **MIT**. 
 Vedi il file [LICENSE](LICENSE) per maggiori dettagli.
-
----
-*Developed with ❤️ using React Native & Expo*
