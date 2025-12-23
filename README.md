@@ -75,7 +75,7 @@ L'applicazione è costruita con tecnologie moderne e performanti:
    ```bash
    git clone <url-repository>
    cd Training-Load-Manager
-   ```
+   ```   
 
 2. **Installa le dipendenze:**
    ```bash
