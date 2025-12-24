@@ -102,4 +102,4 @@ L'applicazione funziona completamente **offline**. Tutti i dati relativi agli al
 
 ## 📄 Licenza
 Questo progetto è Open Source e distribuito sotto licenza **MIT**. 
-Vedi il file [LICENSE](LICENSE) per maggiori dettagli.
+Vedi il file [LICENSE](LICENSE) per maggiori dettagli.    
