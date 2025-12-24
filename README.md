@@ -64,7 +64,7 @@ L'applicazione è costruita con tecnologie moderne e performanti:
 - **Date Management:** `date-fns`.
 - **Internazionalizzazione:** `i18next` (Supporto multilingua).
 
-## 📱 Installazione e Avvio
+## 📱 Installazione e Avvio   
 
 ### Prerequisiti
 - Node.js installato.
