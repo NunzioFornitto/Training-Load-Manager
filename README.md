@@ -94,7 +94,7 @@ L'applicazione è costruita con tecnologie moderne e performanti:
 Se non vuoi installare l'ambiente di sviluppo, puoi scaricare l'ultimo APK compilato direttamente dalla **CI/CD Pipeline** di GitHub:
 1. Vai nella scheda **Actions** del repository.
 2. Clicca sull'ultimo workflow completato con successo.
-3. Scorri in basso alla sezione **Artifacts** e scarica il file `app-release`.
+3. Scorri in basso alla sezione **Artifacts** e scarica il file `app-release`.  
 Oppure puoi andare nella sezione **Releases** e scaricare l'apk dell'ultima release. 
 
 ## 🔒 Privacy e Dati
